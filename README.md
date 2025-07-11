@@ -58,7 +58,7 @@ cd quiz-backend
 
 ```bash
 # Créer l'environnement virtuel
-python -m venv venv
+python3 -m venv venv
 
 # Activer l'environnement virtuel
 # Sur Windows :
