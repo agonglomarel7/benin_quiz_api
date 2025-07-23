@@ -5,7 +5,7 @@ from flask_jwt_extended import JWTManager
 from datetime import timedelta
 
 # Déclaration des extensions
-from models.user import db  # ✅ C’est ici que tu centralises db
+from models.user import db  # ✅ C'est ici que tu centralises db
 
 jwt = JWTManager()
 
@@ -42,6 +42,8 @@ def create_app():
     
     return app
 
+# ✅ Add this line - create the app instance for gunicorn
+app = create_app()
+
 if __name__ == '__main__':
-    app = create_app()
     app.run(debug=True)
