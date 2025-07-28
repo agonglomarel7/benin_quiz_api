@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from models.user import User
-from app import db
+from database import db  # Import depuis database.py au lieu de app.py
 from flask_jwt_extended import create_access_token
 import re
 
@@ -52,7 +52,7 @@ class AuthController:
             db.session.commit()
             
             # Création du token JWT
-            token = create_access_token(identity=nouvel_utilisateur.id)
+            token = create_access_token(identity= str(nouvel_utilisateur.id))
             
             return jsonify({
                 'message': 'Inscription réussie',
@@ -84,7 +84,7 @@ class AuthController:
                 return jsonify({'erreur': 'Pseudo ou mot de passe incorrect'}), 401
             
             # Création du token JWT
-            token = create_access_token(identity=utilisateur.id)
+            token = create_access_token(identity=str(utilisateur.id))
             
             return jsonify({
                 'message': 'Connexion réussie',

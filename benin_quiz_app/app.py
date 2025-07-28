@@ -1,14 +1,10 @@
 # app.py
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
 from datetime import timedelta
-
-# Déclaration des extensions
-from models.user import db  # ✅ C'est ici que tu centralises db
+from database import db  # Import depuis le nouveau fichier database.py
 
 jwt = JWTManager()
-
 
 def create_app():
     app = Flask(__name__)
@@ -25,8 +21,6 @@ def create_app():
     db.init_app(app)
     jwt.init_app(app)
     
-    # Import des modèles après l'initialisation
-    
     # Import et enregistrement des routes
     from routes.auth_routes import auth_bp
     from routes.user_routes import user_bp
@@ -42,7 +36,7 @@ def create_app():
     
     return app
 
-# ✅ Add this line - create the app instance for gunicorn
+# Create the app instance for gunicorn
 app = create_app()
 
 if __name__ == '__main__':

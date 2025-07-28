@@ -1,8 +1,6 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()  # ← On déclare ici, mais on l'initialise dans app.py
+from database import db  # Import depuis database.py au lieu de déclarer ici
 
 class User(db.Model):
     """Modèle pour représenter un utilisateur du quiz"""
