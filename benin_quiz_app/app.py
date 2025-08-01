@@ -25,11 +25,14 @@ def create_app():
     from routes.auth_routes import auth_bp
     from routes.user_routes import user_bp
     from routes.category_routes import category_bp
+    from routes.question_routes import question_bp
 
     
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
     app.register_blueprint(user_bp, url_prefix='/api/user')
     app.register_blueprint(category_bp)
+    app.register_blueprint(question_bp)
+
 
     
     # Création des tables au démarrage
