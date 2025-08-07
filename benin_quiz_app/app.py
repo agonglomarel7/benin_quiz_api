@@ -26,12 +26,14 @@ def create_app():
     from routes.user_routes import user_bp
     from routes.category_routes import category_bp
     from routes.question_routes import question_bp
+    from routes.response_routes import reponse_bp
 
-    
+
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
     app.register_blueprint(user_bp, url_prefix='/api/user')
     app.register_blueprint(category_bp)
     app.register_blueprint(question_bp)
+    app.register_blueprint(reponse_bp)
 
 
     
